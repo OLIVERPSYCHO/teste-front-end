@@ -1,0 +1,69 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 16px 14px 14px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+  &__image {
+    width: 100%;
+    height: 260px;
+    margin-bottom: 20px;
+    object-fit: contain;
+  }
+
+  &__name {
+    min-height: 52px;
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 26px;
+    color: #222;
+  }
+
+  &__old-price {
+    font-size: 16px;
+    font-weight: 300;
+    color: #777;
+  }
+
+  &__price {
+    margin: 2px 0 4px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #111;
+  }
+
+  &__installment {
+    font-size: 14px;
+    font-weight: 300;
+    color: #222;
+  }
+
+  &__shipping {
+    margin: 10px 0 12px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #ff0066;
+  }
+
+  &__button {
+    height: 48px;
+    margin-top: auto;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    background: #ff0066;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: #d6005a;
+    }
+  }
+}

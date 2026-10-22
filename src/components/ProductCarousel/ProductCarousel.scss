@@ -1,0 +1,74 @@
+$gap: 24px;
+
+.carousel {
+  position: relative;
+  padding: 0 56px;
+
+  &__track {
+    display: flex;
+    gap: $gap;
+    padding: 12px 4px 24px;
+    list-style: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__item {
+    flex: 0 0 calc((100% - #{$gap * 3}) / 4);
+    scroll-snap-align: start;
+
+    @media (max-width: 1024px) {
+      flex-basis: calc((100% - #{$gap * 2}) / 3);
+    }
+
+    @media (max-width: 768px) {
+      flex-basis: calc((100% - #{$gap}) / 2);
+    }
+
+    @media (max-width: 480px) {
+      flex-basis: 100%;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 60px;
+    color: #222;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #ff0066;
+    }
+
+    &--prev {
+      left: 0;
+    }
+
+    &--next {
+      right: 0;
+    }
+
+    @media (max-width: 480px) {
+      width: 28px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 32px;
+  }
+}

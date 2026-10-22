@@ -1,0 +1,112 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.6);
+
+  &__content {
+    position: relative;
+    display: flex;
+    gap: 32px;
+    width: 100%;
+    max-width: 900px;
+    padding: 40px;
+    background: #fff;
+    border-radius: 4px;
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      max-height: 90vh;
+      padding: 24px;
+      overflow-y: auto;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 32px;
+    line-height: 1;
+    color: #222;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+
+  &__image {
+    flex: 1;
+    width: 100%;
+    max-width: 360px;
+    object-fit: contain;
+    align-self: center;
+  }
+
+  &__info {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  &__name {
+    font-size: 24px;
+    font-weight: 600;
+    color: #222;
+    text-transform: uppercase;
+  }
+
+  &__price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111;
+  }
+
+  &__description {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #444;
+  }
+
+  &__details {
+    align-self: flex-start;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ff0066;
+    text-decoration: underline;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  &__quantity {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    button {
+      width: 36px;
+      height: 44px;
+      font-size: 18px;
+      background: none;
+      border: 0;
+      cursor: pointer;
+    }
+
+    span {
+      min-width: 36px;
+      font-size: 14px;
+      text-align: center;

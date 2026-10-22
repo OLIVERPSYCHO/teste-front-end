@@ -1,0 +1,39 @@
+.showcase {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 48px 24px;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 16px;
+    font-size: 40px;
+    font-weight: 700;
+    color: #ff0066;
+    text-align: center;
+
+    &::before,
+    &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #d9d9d9;
+    }
+
+    @media (max-width: 768px) {
+      gap: 16px;
+      font-size: 24px;
+    }
+  }
+
+  &__message {
+    padding: 48px 0;
+    text-align: center;
+    color: #555;
+
+    &--error {
+      color: #c0392b;
+    }
+  }
+}
