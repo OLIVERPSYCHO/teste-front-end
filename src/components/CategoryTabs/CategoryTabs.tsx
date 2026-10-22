@@ -6,22 +6,15 @@ interface CategoryTabsProps {
   onChange: (category: string) => void
 }
 
-export default function CategoryTabs({
-  categories,
-  active,
-  onChange,
-}: CategoryTabsProps) {
+export default function CategoryTabs({ categories, active, onChange }: CategoryTabsProps) {
   return (
-    <nav className="category-tabs" aria-label="Categorias de produtos">
-      <ul className="category-tabs__list">
+    <nav className="abas">
+      <ul>
         {categories.map((category) => (
-          <li key={category} className="category-tabs__item">
+          <li key={category}>
             <button
               type="button"
-              className={`category-tabs__button${
-                category === active ? ' category-tabs__button--active' : ''
-              }`}
-              aria-current={category === active ? 'true' : undefined}
+              className={category === active ? 'ativa' : ''}
               onClick={() => onChange(category)}
             >
               {category}
