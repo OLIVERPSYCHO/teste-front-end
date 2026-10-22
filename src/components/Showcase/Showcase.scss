@@ -1,9 +1,9 @@
-.showcase {
+.vitrine {
   max-width: 1280px;
   margin: 0 auto;
   padding: 48px 24px;
 
-  &__title {
+  h2 {
     display: flex;
     align-items: center;
     gap: 32px;
@@ -27,13 +27,13 @@
     }
   }
 
-  &__message {
+  .mensagem {
     padding: 48px 0;
     text-align: center;
     color: #555;
+  }
 
-    &--error {
-      color: #c0392b;
-    }
+  .erro {
+    color: #c0392b;
   }
 }

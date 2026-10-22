@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { Product } from '../../types/product'
 import { formatPrice } from '../../utils/format'
 import './ProductModal.scss'
@@ -9,81 +9,47 @@ interface ProductModalProps {
 }
 
 export default function ProductModal({ product, onClose }: ProductModalProps) {
-  const [quantity, setQuantity] = useState(1)
-  const closeRef = useRef<HTMLButtonElement>(null)
+  const [quantidade, setQuantidade] = useState(1)
 
   useEffect(() => {
-    closeRef.current?.focus()
-
-    const handleKeyDown = (event: KeyboardEvent) => {
+    function aoApertarTecla(event: KeyboardEvent) {
       if (event.key === 'Escape') onClose()
     }
 
-    document.addEventListener('keydown', handleKeyDown)
-    document.body.style.overflow = 'hidden'
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown)
-      document.body.style.overflow = ''
-    }
+    document.addEventListener('keydown', aoApertarTecla)
+    return () => document.removeEventListener('keydown', aoApertarTecla)
   }, [onClose])
 
   return (
-    <div className="modal" onClick={onClose}>
-      <div
-        className="modal__content"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modal-title"
-        onClick={(event) => event.stopPropagation()}
-      >
-        <button
-          ref={closeRef}
-          type="button"
-          className="modal__close"
-          onClick={onClose}
-          aria-label="Fechar"
-        >
+    <div className="modal-fundo" onClick={onClose}>
+      <div className="modal" onClick={(event) => event.stopPropagation()}>
+        <button type="button" className="fechar" onClick={onClose} aria-label="Fechar">
           ×
         </button>
 
-        <img
-          className="modal__image"
-          src={product.photo}
-          alt={product.productName}
-        />
+        <img src={product.photo} alt={product.productName} />
 
-        <div className="modal__info">
-          <h2 id="modal-title" className="modal__name">
-            {product.productName}
-          </h2>
-          <p className="modal__price">{formatPrice(product.price)}</p>
-          <p className="modal__description">{product.descriptionShort}</p>
+        <div className="info">
+          <h2>{product.productName}</h2>
+          <p className="preco">{formatPrice(product.price)}</p>
+          <p>{product.descriptionShort}</p>
 
-          <button type="button" className="modal__details">
+          <button type="button" className="detalhes">
             Veja mais detalhes do produto
           </button>
 
-          <div className="modal__actions">
-            <div className="modal__quantity">
-              <button
-                type="button"
-                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                aria-label="Diminuir quantidade"
-              >
+          <div className="acoes">
+            <div className="quantidade">
+              <button type="button" onClick={() => setQuantidade(Math.max(1, quantidade - 1))}>
                 −
               </button>
-              <span aria-live="polite">{String(quantity).padStart(2, '0')}</span>
-              <button
-                type="button"
-                onClick={() => setQuantity((q) => q + 1)}
-                aria-label="Aumentar quantidade"
-              >
+              <span>{quantidade}</span>
+              <button type="button" onClick={() => setQuantidade(quantidade + 1)}>
                 +
               </button>
             </div>
 
-            <button type="button" className="modal__buy" onClick={onClose}>
+            <button type="button" className="comprar" onClick={onClose}>
               Comprar
             </button>
           </div>
