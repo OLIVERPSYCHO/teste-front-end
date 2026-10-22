@@ -1,5 +1,6 @@
 import type { Product } from '../../types/product'
 import { formatPrice } from '../../utils/format'
+import { PARCELAS_SEM_JUROS, calcularParcela, calcularPrecoAnterior } from '../../config/pricing'
 import './ProductCard.scss'
 
 interface ProductCardProps {
@@ -8,22 +9,37 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product, onSelect }: ProductCardProps) {
-  const precoAntigo = product.price * 1.07
-  const parcela = product.price / 2
+  const precoAnterior = calcularPrecoAnterior(product.price)
+  const parcela = calcularParcela(product.price)
 
   return (
     <article className="card">
-      <img src={product.photo} alt={product.productName} />
+      {/* O enunciado pede a abertura do modal ao clicar no produto, por isso a
+          imagem e o título ficam dentro de um botão, acessível por teclado. */}
+      <button type="button" className="gatilho" onClick={() => onSelect(product)}>
+        <img
+          src={product.photo}
+          alt={product.productName}
+          width={260}
+          height={260}
+          loading="lazy"
+        />
+        <h3>{product.descriptionShort}</h3>
+      </button>
 
-      <h3>{product.descriptionShort}</h3>
-
-      <p className="preco-antigo">{formatPrice(precoAntigo)}</p>
+      <p className="preco-antigo">
+        <span className="apenas-leitor-de-tela">Preço anterior: </span>
+        {formatPrice(precoAnterior)}
+      </p>
       <p className="preco">{formatPrice(product.price)}</p>
-      <p className="parcela">ou 2x de {formatPrice(parcela)} sem juros</p>
+      <p className="parcela">
+        ou {PARCELAS_SEM_JUROS}x de {formatPrice(parcela)} sem juros
+      </p>
       <p className="frete">Frete grátis</p>
 
-      <button type="button" onClick={() => onSelect(product)}>
+      <button type="button" className="comprar" onClick={() => onSelect(product)}>
         Comprar
+        <span className="apenas-leitor-de-tela"> {product.productName}</span>
       </button>
     </article>
   )
