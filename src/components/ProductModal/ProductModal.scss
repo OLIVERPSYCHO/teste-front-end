@@ -1,3 +1,6 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
 .modal-fundo {
   position: fixed;
   inset: 0;
@@ -5,32 +8,33 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 16px;
-  background: rgba(0, 0, 0, 0.6);
+  padding: $space-4;
+  background: $color-overlay;
 }
 
 .modal {
   position: relative;
   display: flex;
-  gap: 32px;
+  gap: $space-6;
   width: 100%;
   max-width: 900px;
   padding: 40px;
-  background: #fff;
-  border-radius: 4px;
+  background: $color-surface;
+  border-radius: $radius-sm;
 
-  @media (max-width: 640px) {
+  @include responde-ate('mobile') {
     flex-direction: column;
     max-height: 90vh;
-    padding: 24px;
+    padding: $space-5;
     overflow-y: auto;
   }
 
   .fechar {
     position: absolute;
-    top: 8px;
-    right: 16px;
-    font-size: 32px;
+    top: $space-2;
+    right: $space-4;
+    font-size: $space-6;
+    line-height: 1;
     background: none;
     border: 0;
     cursor: pointer;
@@ -52,22 +56,22 @@
   }
 
   h2 {
-    font-size: 24px;
-    font-weight: 600;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-medium;
     text-transform: uppercase;
   }
 
   .preco {
-    font-size: 24px;
-    font-weight: 700;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
   }
 
   .detalhes {
     align-self: flex-start;
     padding: 0;
-    font-size: 14px;
-    font-weight: 600;
-    color: #ff0066;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: $color-brand;
     text-decoration: underline;
     background: none;
     border: 0;
@@ -76,26 +80,32 @@
 
   .acoes {
     display: flex;
-    gap: 16px;
-    margin-top: 8px;
+    gap: $space-4;
+    margin-top: $space-2;
   }
 
   .quantidade {
     display: flex;
     align-items: center;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: $radius-sm;
 
     button {
       width: 36px;
       height: 44px;
-      font-size: 18px;
+      font-size: $font-size-md;
       background: none;
       border: 0;
       cursor: pointer;
+
+      &:disabled {
+        color: $color-border;
+        cursor: default;
+      }
     }
 
-    span {
+    output {
+      display: block;
       min-width: 36px;
       text-align: center;
     }
@@ -104,17 +114,7 @@
   .comprar {
     flex: 1;
     height: 44px;
-    font-size: 14px;
-    font-weight: 700;
-    color: #fff;
-    text-transform: uppercase;
-    background: #ff0066;
-    border: 0;
-    border-radius: 4px;
-    cursor: pointer;
-
-    &:hover {
-      background: #d6005a;
-    }
+    @include botao-marca;
+    font-size: $font-size-xs;
   }
 }

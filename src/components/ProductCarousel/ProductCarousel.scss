@@ -1,4 +1,5 @@
-$gap: 24px;
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
 
 .carrossel {
   position: relative;
@@ -6,31 +7,27 @@ $gap: 24px;
 
   ul {
     display: flex;
-    gap: $gap;
-    padding: 12px 4px 24px;
+    gap: $carousel-gap;
+    padding: $space-3 $space-1 $space-5;
     list-style: none;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    @include esconde-scrollbar;
   }
 
   li {
-    flex: 0 0 calc((100% - #{$gap * 3}) / 4);
+    flex: 0 0 calc((100% - #{$carousel-gap * 3}) / 4);
     scroll-snap-align: start;
 
-    @media (max-width: 1024px) {
-      flex-basis: calc((100% - #{$gap * 2}) / 3);
+    @include responde-ate('desktop') {
+      flex-basis: calc((100% - #{$carousel-gap * 2}) / 3);
     }
 
-    @media (max-width: 768px) {
-      flex-basis: calc((100% - #{$gap}) / 2);
+    @include responde-ate('tablet') {
+      flex-basis: calc((100% - #{$carousel-gap}) / 2);
     }
 
-    @media (max-width: 480px) {
+    @include responde-ate('mobile') {
       flex-basis: 100%;
     }
   }
@@ -41,14 +38,19 @@ $gap: 24px;
     width: 40px;
     font-size: 64px;
     line-height: 1;
-    color: #222;
+    color: $color-text;
     background: none;
     border: 0;
     cursor: pointer;
     transform: translateY(-50%);
 
-    &:hover {
-      color: #ff0066;
+    &:hover:not(:disabled) {
+      color: $color-brand;
+    }
+
+    &:disabled {
+      color: $color-border;
+      cursor: default;
     }
   }
 
@@ -60,7 +62,7 @@ $gap: 24px;
     right: 0;
   }
 
-  @media (max-width: 480px) {
+  @include responde-ate('mobile') {
     padding: 0 32px;
 
     .seta {

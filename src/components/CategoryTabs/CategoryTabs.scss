@@ -1,36 +1,40 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
 .abas {
-  margin-bottom: 24px;
+  margin-bottom: $space-5;
   overflow-x: auto;
+  @include esconde-scrollbar;
 
   ul {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     min-width: 720px;
     list-style: none;
-    border: 1px solid #d9d9d9;
+    border: 1px solid $color-border;
   }
 
   li + li {
-    border-left: 1px solid #d9d9d9;
+    border-left: 1px solid $color-border;
   }
 
   button {
     width: 100%;
     height: 50px;
-    font-size: 18px;
-    color: #222;
+    font-size: $font-size-md;
+    color: $color-text;
     text-transform: uppercase;
-    background: #fff;
+    background: $color-surface;
     border: 0;
     cursor: pointer;
 
     &:hover,
     &.ativa {
-      color: #ff0066;
+      color: $color-brand;
     }
 
     &.ativa {
-      font-weight: 600;
+      font-weight: $font-weight-medium;
     }
   }
 }

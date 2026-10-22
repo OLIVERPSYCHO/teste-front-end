@@ -1,3 +1,6 @@
+@use 'tokens' as *;
+@use 'mixins' as *;
+
 *,
 *::before,
 *::after {
@@ -7,10 +10,15 @@
 }
 
 body {
-  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-  color: #222;
-  background: #fff;
+  font-family: $font-family-base;
+  color: $color-text;
+  background: $color-surface;
   -webkit-font-smoothing: antialiased;
+}
+
+// Trava a rolagem do fundo enquanto o modal esta aberto.
+body.modal-aberto {
+  overflow: hidden;
 }
 
 img {
@@ -20,4 +28,9 @@ img {
 
 button {
   font-family: inherit;
+  @include foco-visivel;
+}
+
+.apenas-leitor-de-tela {
+  @include apenas-leitor-de-tela;
 }

@@ -1,0 +1,61 @@
+@use 'sass:map';
+@use 'tokens' as *;
+
+// Aplica o bloco a partir do breakpoint informado para baixo.
+// Uso: @include responde-ate('tablet') { ... }
+@mixin responde-ate($nome) {
+  @if not map.has-key($breakpoints, $nome) {
+    @error 'Breakpoint "#{$nome}" nao existe em $breakpoints.';
+  }
+
+  @media (max-width: map.get($breakpoints, $nome)) {
+    @content;
+  }
+}
+
+// Botao solido da marca, usado no card e no modal.
+@mixin botao-marca {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $color-surface;
+  text-transform: uppercase;
+  background: $color-brand;
+  border: 0;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: $color-brand-hover;
+  }
+}
+
+// Remove a barra de rolagem mantendo o scroll funcional.
+@mixin esconde-scrollbar {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// Conteudo lido por leitores de tela, invisivel na tela.
+@mixin apenas-leitor-de-tela {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Contorno visivel na navegacao por teclado.
+@mixin foco-visivel {
+  &:focus-visible {
+    outline: 2px solid $color-brand;
+    outline-offset: 2px;
+  }
+}

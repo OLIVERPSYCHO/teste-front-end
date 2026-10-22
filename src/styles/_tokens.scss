@@ -1,0 +1,53 @@
+// Tokens de design do projeto.
+// Fonte de verdade: layout do Figma "Teste Front-End Jr".
+// O rosa da marca foi amostrado da area de preenchimento solido do botao
+// COMPRAR no layout de referencia (rgb(255, 0, 95)).
+
+// Cores
+$color-brand: #ff005f;
+$color-brand-hover: #d6005a;
+$color-text: #222;
+$color-text-muted: #777;
+$color-border: #d9d9d9;
+$color-surface: #fff;
+$color-error: #c0392b;
+$color-overlay: rgba(0, 0, 0, 0.6);
+$color-shadow: rgba(0, 0, 0, 0.12);
+
+// Tipografia
+$font-family-base: 'Poppins', 'Segoe UI', Arial, sans-serif;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 600;
+$font-weight-bold: 700;
+
+$font-size-xs: 14px;
+$font-size-sm: 16px;
+$font-size-md: 18px;
+$font-size-lg: 24px;
+$font-size-xl: 40px;
+
+// Espacamentos
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 24px;
+$space-6: 32px;
+$space-7: 48px;
+
+// Formas
+$radius-sm: 4px;
+$radius-md: 10px;
+$shadow-card: 0 4px 16px $color-shadow;
+
+// Layout
+$container-max-width: 1280px;
+$carousel-gap: $space-5;
+
+// Breakpoints usados pelo mixin `responde-ate`
+$breakpoints: (
+  'mobile': 480px,
+  'tablet': 768px,
+  'desktop': 1024px,
+);
