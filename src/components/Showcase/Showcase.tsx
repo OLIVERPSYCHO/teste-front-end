@@ -4,7 +4,10 @@ import { fetchProducts } from '../../services/products'
 import CategoryTabs from '../CategoryTabs/CategoryTabs'
 import ProductCarousel from '../ProductCarousel/ProductCarousel'
 import ProductModal from '../ProductModal/ProductModal'
+import ProductListJsonLd from '../StructuredData/ProductListJsonLd'
 import './Showcase.scss'
+
+const TITULO = 'Produtos relacionados'
 
 const categories = ['Celular', 'Acessórios', 'Tablets', 'Notebooks', 'TVs', 'Ver todos']
 
@@ -13,35 +16,39 @@ export default function Showcase() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [selected, setSelected] = useState<Product | null>(null)
+  // O JSON não traz categoria, então a aba é apenas estado visual (ver CategoryTabs).
   const [category, setCategory] = useState(categories[0])
 
   useEffect(() => {
     fetchProducts()
       .then((data) => setProducts(data))
-      .catch((err) => setError(err.message))
+      .catch(() => setError('Não foi possível carregar os produtos.'))
       .finally(() => setLoading(false))
   }, [])
 
   return (
-    <section className="vitrine">
-      <h2>Produtos relacionados</h2>
+    <section className="vitrine" aria-labelledby="titulo-vitrine">
+      <h2 id="titulo-vitrine">{TITULO}</h2>
 
-      <CategoryTabs
-        categories={categories}
-        active={category}
-        onChange={setCategory}
-      />
+      <CategoryTabs categories={categories} active={category} onChange={setCategory} />
 
-      {loading && <p className="mensagem">Carregando produtos...</p>}
-      {error && <p className="mensagem erro">{error}</p>}
+      <div aria-live="polite">
+        {loading && <p className="mensagem">Carregando produtos...</p>}
+        {error && (
+          <p className="mensagem erro" role="alert">
+            {error}
+          </p>
+        )}
+      </div>
 
       {!loading && !error && (
-        <ProductCarousel products={products} onSelect={setSelected} />
+        <>
+          <ProductCarousel products={products} onSelect={setSelected} />
+          <ProductListJsonLd products={products} nome={TITULO} />
+        </>
       )}
 
-      {selected && (
-        <ProductModal product={selected} onClose={() => setSelected(null)} />
-      )}
+      {selected && <ProductModal product={selected} onClose={() => setSelected(null)} />}
     </section>
   )
 }
