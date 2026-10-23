@@ -3,11 +3,7 @@ import type { Product, ProductsResponse } from '../types/product'
 const PRODUCTS_PATH = '/teste-front-end/junior/tecnologia/lista-produtos/produtos.json'
 const DEFAULT_ORIGIN = 'https://app.econverse.com.br'
 
-// A origem e configuravel por variavel de ambiente para que o mesmo codigo
-// funcione em `dev`, `preview` e em um deploy estatico:
-// - dev e preview usam `/api-econverse`, que o Vite encaminha para a Econverse
-//   (ver proxy em vite.config.ts), evitando bloqueio de CORS;
-// - sem a variavel, a requisicao vai direto para o dominio publico.
+// Em dev e preview, VITE_API_ORIGIN aponta para o proxy do Vite e evita CORS.
 const API_ORIGIN = import.meta.env.VITE_API_ORIGIN ?? DEFAULT_ORIGIN
 
 export const PRODUCTS_URL = `${API_ORIGIN}${PRODUCTS_PATH}`

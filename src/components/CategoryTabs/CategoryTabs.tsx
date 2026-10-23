@@ -6,15 +6,8 @@ interface CategoryTabsProps {
   onChange: (category: string) => void
 }
 
-/**
- * Abas de categoria da vitrine.
- *
- * Limitação conhecida: o JSON de produtos da Econverse não traz nenhum campo de
- * categoria (apenas productName, descriptionShort, photo e price), então não há
- * dado para filtrar a lista. As abas reproduzem o layout e mantêm o estado
- * selecionado, sem alterar os produtos exibidos. O comportamento está
- * documentado no README.
- */
+// O JSON não tem campo de categoria, então as abas mantêm o estado selecionado
+// sem filtrar a lista. Ver README.
 export default function CategoryTabs({ categories, active, onChange }: CategoryTabsProps) {
   return (
     <nav className="abas" aria-label="Categorias de produtos">

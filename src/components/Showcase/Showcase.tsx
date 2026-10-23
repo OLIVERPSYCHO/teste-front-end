@@ -16,7 +16,6 @@ export default function Showcase() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [selected, setSelected] = useState<Product | null>(null)
-  // O JSON não traz categoria, então a aba é apenas estado visual (ver CategoryTabs).
   const [category, setCategory] = useState(categories[0])
 
   useEffect(() => {

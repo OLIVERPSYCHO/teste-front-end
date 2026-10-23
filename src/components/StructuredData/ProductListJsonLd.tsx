@@ -5,10 +5,7 @@ interface ProductListJsonLdProps {
   nome: string
 }
 
-/**
- * Dados estruturados (schema.org) da vitrine, usados por buscadores para
- * entender a lista de produtos da página.
- */
+// Dados estruturados (schema.org) da lista de produtos.
 export default function ProductListJsonLd({ products, nome }: ProductListJsonLdProps) {
   if (products.length === 0) return null
 
@@ -35,7 +32,6 @@ export default function ProductListJsonLd({ products, nome }: ProductListJsonLdP
     })),
   }
 
-  // Escapa "<" para que nenhum valor do JSON feche a tag script antes da hora.
   const json = JSON.stringify(dados).replace(/</g, '\\u003c')
 
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json }} />

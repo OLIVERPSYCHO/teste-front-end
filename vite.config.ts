@@ -2,10 +2,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// O JSON de produtos fica em outro dominio. O proxy abaixo expoe o caminho
-// `/api-econverse` no servidor local (dev e preview), evitando bloqueio de CORS.
-// A aplicacao so usa esse caminho quando VITE_API_ORIGIN esta definida
-// (ver .env.development e .env.example).
+// Encaminha /api-econverse para o domínio da Econverse, evitando CORS no dev.
 const econverseProxy = {
   '/api-econverse': {
     target: 'https://app.econverse.com.br',

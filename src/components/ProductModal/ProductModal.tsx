@@ -20,7 +20,6 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
     const elementoAnterior = document.activeElement as HTMLElement | null
     const dialogo = dialogoRef.current
 
-    // Impede a rolagem do conteúdo atrás do modal.
     document.body.classList.add('modal-aberto')
     dialogo?.querySelector<HTMLElement>(SELETOR_FOCAVEIS)?.focus()
 
@@ -32,7 +31,6 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
 
       if (event.key !== 'Tab' || !dialogo) return
 
-      // Mantém o foco preso dentro do modal enquanto ele estiver aberto.
       const focaveis = Array.from(dialogo.querySelectorAll<HTMLElement>(SELETOR_FOCAVEIS))
       if (focaveis.length === 0) return
 
@@ -53,7 +51,6 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
     return () => {
       document.removeEventListener('keydown', aoApertarTecla)
       document.body.classList.remove('modal-aberto')
-      // Devolve o foco para o elemento que abriu o modal.
       elementoAnterior?.focus()
     }
   }, [onClose])
