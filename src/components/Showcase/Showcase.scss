@@ -4,14 +4,15 @@
 .vitrine {
   max-width: $container-max-width;
   margin: 0 auto;
-  padding: $space-7 $space-5;
+  padding: $space-7 $gutter;
 
   h2 {
     display: flex;
     align-items: center;
-    gap: $space-6;
-    margin-bottom: $space-4;
-    font-size: $font-size-xl;
+    gap: 37px;
+    max-width: $rule-width;
+    margin: 0 auto 20px;
+    font-size: $font-size-section-title;
     font-weight: $font-weight-bold;
     color: $color-brand;
     text-align: center;
@@ -21,7 +22,7 @@
       content: '';
       flex: 1;
       height: 1px;
-      background: $color-border;
+      background: $color-rule;
     }
 
     @include responde-ate('tablet') {

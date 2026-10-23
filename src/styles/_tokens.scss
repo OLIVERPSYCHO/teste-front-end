@@ -1,11 +1,12 @@
-// Tokens extraidos do layout do Figma "Teste Front-End Jr".
+// Tokens extraidos do layout do Figma "Teste Front-End Jr" (frame de 1440px).
 
 // Cores
-$color-brand: #ff005f;
-$color-brand-hover: #d6005a;
+$color-brand: #f71963;
+$color-brand-hover: #d4134f;
 $color-text: #222;
 $color-text-muted: #777;
-$color-border: #d9d9d9;
+$color-border: #bdbdbd;
+$color-rule: #dedede;
 $color-surface: #fff;
 $color-error: #c0392b;
 $color-overlay: rgba(0, 0, 0, 0.6);
@@ -22,7 +23,10 @@ $font-size-xs: 14px;
 $font-size-sm: 16px;
 $font-size-md: 18px;
 $font-size-lg: 24px;
-$font-size-xl: 40px;
+
+$font-size-section-title: 30px;
+$font-size-price: 36px;
+$font-size-price-old: 20px;
 
 // Espacamentos
 $space-1: 4px;
@@ -39,8 +43,13 @@ $radius-md: 10px;
 $shadow-card: 0 4px 16px $color-shadow;
 
 // Layout
-$container-max-width: 1280px;
-$carousel-gap: $space-5;
+$content-width: 1264px;
+$gutter: $space-6;
+$container-max-width: $content-width + $gutter * 2;
+$rule-width: 1136px;
+$carousel-gap: 62px;
+$card-width: 270px;
+$card-height: 492px;
 
 // Breakpoints usados pelo mixin `responde-ate`
 $breakpoints: (
