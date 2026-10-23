@@ -14,8 +14,6 @@ export default function ProductCard({ product, onSelect }: ProductCardProps) {
 
   return (
     <article className="card">
-      {/* O enunciado pede a abertura do modal ao clicar no produto, por isso a
-          imagem e o título ficam dentro de um botão, acessível por teclado. */}
       <button type="button" className="gatilho" onClick={() => onSelect(product)}>
         <img
           src={product.photo}
@@ -27,10 +25,7 @@ export default function ProductCard({ product, onSelect }: ProductCardProps) {
         <h3>{product.descriptionShort}</h3>
       </button>
 
-      <p className="preco-antigo">
-        <span className="apenas-leitor-de-tela">Preço anterior: </span>
-        {formatPrice(precoAnterior)}
-      </p>
+      <p className="preco-antigo">{formatPrice(precoAnterior)}</p>
       <p className="preco">{formatPrice(product.price)}</p>
       <p className="parcela">
         ou {PARCELAS_SEM_JUROS}x de {formatPrice(parcela)} sem juros
@@ -39,7 +34,6 @@ export default function ProductCard({ product, onSelect }: ProductCardProps) {
 
       <button type="button" className="comprar" onClick={() => onSelect(product)}>
         Comprar
-        <span className="apenas-leitor-de-tela"> {product.productName}</span>
       </button>
     </article>
   )
