@@ -44,35 +44,6 @@ cd teste-front-end
 npm install
 ```
 
-## Rodando localmente
-
-```bash
-npm run dev
-```
-
-A aplicação fica disponível em http://localhost:5173.
-
-## Build
-
-```bash
-npm run build
-npm run preview
-```
-
-## Testes e qualidade
-
-```bash
-npm test
-npm run lint
-npm run typecheck
-```
-
-Também estão disponíveis os comandos `npm run test:watch` e `npm run test:coverage`.
-
-## Créditos
-
-Layout de referência original: **Econverse**. Este repositório contém a implementação front-end do teste técnico, não o layout original.
-
 ---
 
 Desenvolvido por Renan Amaral de Oliveira · [GitHub](https://github.com/OLIVERPSYCHO)
